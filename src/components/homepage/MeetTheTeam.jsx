@@ -53,15 +53,21 @@ const MeetTheTeam = () => {
 
   return (
     <section className="bg-white py-16 px-6 md:px-20">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Team Image */}
-        <div className="mb-10">
+      <div className="max-w-6xl mx-auto text-center">clear
+        {/* Team Image with entrance + hover zoom */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={inView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          whileHover={{ scale: 1.02 }}
+          className="mb-10"
+        >
           <img
             src="/images/team-collaboration.jpg"
             alt="Flyrunz team collaborating"
             className="w-full rounded-xl shadow-md object-cover aspect-[4/3] mx-auto"
           />
-        </div>
+        </motion.div>
 
         {/* Heading */}
         <h2 className="text-3xl md:text-4xl font-bold text-blue-700 mb-6">

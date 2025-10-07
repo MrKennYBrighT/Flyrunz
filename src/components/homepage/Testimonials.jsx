@@ -15,14 +15,14 @@ const testimonials = [
     country: 'Mexico',
     quote:
       'The vocational training program I joined through Flyrunz landed me a job within 3 months.',
-    image: '/images/authentic-portrait.jpg',
+    image: '/images/vocational-training.jpg',
   },
   {
     name: 'Fatima B.',
     country: 'Nigeria',
     quote:
       'I never imagined I could study abroad. Flyrunz made it possible and guided me every step of the way.',
-    image: '/images/authentic-portrait.jpg',
+    image: '/images/techjob.jpg',
   },
 ];
 
