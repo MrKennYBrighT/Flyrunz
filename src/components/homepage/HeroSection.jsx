@@ -64,9 +64,9 @@ const HeroSection = () => {
             gap: "1rem",
           }}
         >
-          <MotionButton bg="#1D4ED8" text="#FFFFFF" label="Find Your Path" />
-          <MotionButton bg="#F59E0B" text="#FFFFFF" label="Explore Programs" />
-          <MotionOutlineButton border="#1D4ED8" label="Talk to an Advisor" />
+          <a href="#inquiry"><MotionButton bg="#1D4ED8" text="#FFFFFF" label="Find Your Path" /></a>
+          <a href="#programs"><MotionButton bg="#F59E0B" text="#FFFFFF" label="Explore Programs" /></a>
+          <a href="#contact"><MotionOutlineButton border="#1D4ED8" label="Talk to an Advisor" /></a>
         </div>
       </motion.div>
     </div>

@@ -1,16 +1,20 @@
 import { motion } from 'framer-motion';
+import { lazy } from 'react';
 import PageWrapper from '../components/layout/PageWrapper';
-import HeroSection from '../components/homepage/HeroSection';
-import Inquiry from '../components/homepage/Inquiry';
-import AboutFlyrunz from '../components/homepage/AboutFlyrunz';
-import FeaturedPrograms from '../components/homepage/FeaturedPrograms';
-import PathfinderTool from '../components/homepage/PathfinderTool';
-import ImpactTracker from '../components/homepage/ImpactTracker';
-import Testimonials from '../components/homepage/Testimonials';
-import MeetTheTeam from '../components/homepage/MeetTheTeam';
-import Partners from '../components/homepage/Partners';
-import BlogCenter from '../components/homepage/BlogCenter';
-import ContactSupport from '../components/homepage/ContactSupport';
+import LazySection from '../components/layout/LazySection';
+
+// Lazy-loaded components
+const HeroSection = lazy(() => import('../components/homepage/HeroSection'));
+const Inquiry = lazy(() => import('../components/homepage/Inquiry'));
+const AboutFlyrunz = lazy(() => import('../components/homepage/AboutFlyrunz'));
+const FeaturedPrograms = lazy(() => import('../components/homepage/FeaturedPrograms'));
+const PathfinderTool = lazy(() => import('../components/homepage/PathfinderTool'));
+const ImpactTracker = lazy(() => import('../components/homepage/ImpactTracker'));
+const Testimonials = lazy(() => import('../components/homepage/Testimonials'));
+const MeetTheTeam = lazy(() => import('../components/homepage/MeetTheTeam'));
+const Partners = lazy(() => import('../components/homepage/Partners'));
+const BlogCenter = lazy(() => import('../components/homepage/BlogCenter'));
+const ContactSupport = lazy(() => import('../components/homepage/ContactSupport'));
 
 const Home = () => {
   return (
@@ -21,17 +25,25 @@ const Home = () => {
       transition={{ duration: 0.5 }}
     >
       <PageWrapper>
-        <HeroSection />
-        <Inquiry />
-        <AboutFlyrunz />
-        <FeaturedPrograms />
-        <PathfinderTool />
-        <ImpactTracker />
-        <Testimonials />
-        <MeetTheTeam />
-        <Partners />
-        <BlogCenter />
-        <ContactSupport />
+        <LazySection component={HeroSection} id="hero" />
+        <LazySection
+          component={Inquiry}
+          id="inquiry"
+          fallback={<div className="text-orange-500 text-center py-10">Loading Inquiry Form...</div>}
+        />
+        <LazySection component={AboutFlyrunz} id="about" />
+        <LazySection component={FeaturedPrograms} id="programs" />
+        <LazySection component={PathfinderTool} id="pathfinder" />
+        <LazySection component={ImpactTracker} id="impact" />
+        <LazySection component={Testimonials} id="testimonials" />
+        <LazySection
+          component={MeetTheTeam}
+          id="team"
+          fallback={<div className="text-blue-500 text-center py-10">Loading Team Section...</div>}
+        />
+        <LazySection component={Partners} id="partners" />
+        <LazySection component={BlogCenter} id="blog" />
+        <LazySection component={ContactSupport} id="contact" />
       </PageWrapper>
     </motion.div>
   );

@@ -107,9 +107,7 @@ const Navbar = () => {
           {/* CTA Button */}
           <li>
             <a
-              href="https://wa.me/2349114387785"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#inquiry"
               className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white font-bold px-6 py-2 rounded-full shadow-xl hover:scale-105 hover:brightness-110 transition duration-300"
             >
               Claim Your Global Opportunity
@@ -120,20 +118,29 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           aria-label="Toggle menu"
-          className="md:hidden text-blue-700 focus:outline-none"
+          className="md:hidden text-blue-700 bg-transparent focus:outline-none p-2"
+          style={{ backgroundColor: 'transparent' }}
           onClick={() => setIsOpen(!isOpen)}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
-            viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round"
-              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+            />
           </svg>
         </button>
       </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white px-6 pb-6 transition-all duration-300 ease-in-out">
+        <div className="md:hidden bg-white px-6 pb-6 transition-all duration-300 ease-in-out border-t border-blue-100 shadow-sm">
           <ul className="flex flex-col gap-4 text-gray-700 font-medium">
             {[
               { id: 'hero', label: 'Home' },
@@ -143,14 +150,17 @@ const Navbar = () => {
               { id: 'contact', label: 'Contact' }
             ].map(({ id, label }) => (
               <li key={id}>
-                <a href={`#${id}`} className="hover:text-blue-700">
+                <a
+                  href={`#${id}`}
+                  className="block py-2 px-2 rounded hover:bg-blue-50 hover:text-blue-700 transition"
+                >
                   {label}
                 </a>
               </li>
             ))}
             <li>
               <details className="group">
-                <summary className="cursor-pointer hover:text-blue-700">
+                <summary className="cursor-pointer py-2 px-2 rounded hover:bg-blue-50 hover:text-blue-700 transition">
                   Programs
                 </summary>
                 <ul className="pl-4 mt-2 text-sm">
@@ -161,7 +171,10 @@ const Navbar = () => {
                     { id: 'language', icon: '🗣️', label: 'Language Immersion' }
                   ].map(({ id, icon, label }) => (
                     <li key={id}>
-                      <a href={`#${id}`} className="block py-1 hover:text-blue-700">
+                      <a
+                        href={`#${id}`}
+                        className="block py-1 px-2 rounded hover:bg-blue-50 hover:text-blue-700 transition"
+                      >
                         {icon} {label}
                       </a>
                     </li>
@@ -177,6 +190,14 @@ const Navbar = () => {
                 className="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white font-bold px-6 py-2 rounded-full shadow-xl text-center hover:scale-105 hover:brightness-110 transition duration-300"
               >
                 Claim Your Global Opportunity
+              </a>
+            </li>
+            <li>
+              <a
+                href="#contact"
+                className="block text-center border-2 border-blue-700 text-blue-700 font-medium px-6 py-2 rounded-lg hover:bg-blue-50 transition duration-300"
+              >
+                Talk to an Advisor
               </a>
             </li>
           </ul>

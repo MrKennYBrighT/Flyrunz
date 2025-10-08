@@ -8,6 +8,7 @@ const Inquiry = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
@@ -20,6 +21,7 @@ const Inquiry = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const formData = new FormData();
     formData.append('Category', category);
@@ -52,6 +54,8 @@ const Inquiry = () => {
     } catch (error) {
       console.error('Error:', error);
       setStatus('❌ Failed to send inquiry. Check your connection.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -137,18 +141,56 @@ const Inquiry = () => {
                 required
               />
 
-              <motion.button
-                type="submit"
-                whileTap={{ scale: 0.97 }}
-                className={`px-4 py-2 rounded w-full font-semibold transition-colors duration-300 ${
-                  category && destination && email && phone
-                    ? 'bg-blue-700 text-white hover:bg-blue-800'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-                disabled={!category || !destination || !email || !phone}
-              >
-                Make Inquiry 📩
-              </motion.button>
+              {/* Centered Animated Button */}
+              <div className="flex justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <motion.button
+                    type="submit"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: '0 0 0.5rem rgba(29, 78, 216, 0.6)',
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    disabled={!category || !destination || !email || !phone || isSubmitting}
+                    style={{
+                      background: 'linear-gradient(to right, #1D4ED8, #2563EB)',
+                      color: '#FFFFFF',
+                      padding: '12px 24px',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: category && destination && email && phone ? 'pointer' : 'not-allowed',
+                      opacity: category && destination && email && phone ? 1 : 0.6,
+                      fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                      transition: 'all 0.3s ease',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    {isSubmitting ? (
+                      <motion.div
+                        initial={{ rotate: 0 }}
+                        animate={{ rotate: 360 }}
+                        transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                          border: '3px solid #fff',
+                          borderTop: '3px solid transparent',
+                          borderRadius: '50%',
+                          margin: '0 auto',
+                        }}
+                      />
+                    ) : (
+                      '📩 Make Inquiry '
+                    )}
+                  </motion.button>
+                </motion.div>
+              </div>
             </div>
           </form>
 

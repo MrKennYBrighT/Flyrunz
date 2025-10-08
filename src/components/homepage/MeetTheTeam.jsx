@@ -53,7 +53,7 @@ const MeetTheTeam = () => {
 
   return (
     <section className="bg-white py-16 px-6 md:px-20">
-      <div className="max-w-6xl mx-auto text-center">clear
+      <div className="max-w-6xl mx-auto text-center">
         {/* Team Image with entrance + hover zoom */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
