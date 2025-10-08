@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Home from './pages/Home';
+import NotFound from './pages/NotFound'; // ✅ Added 404 page
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -10,6 +11,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} /> {/* ✅ Catch-all route */}
       </Routes>
     </AnimatePresence>
   );
