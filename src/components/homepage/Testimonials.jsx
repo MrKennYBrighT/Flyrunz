@@ -8,21 +8,21 @@ const testimonials = [
     country: 'Kenya',
     quote:
       'Flyrunz helped me secure a scholarship and study in Canada. It changed my life completely!',
-    image: '/images/authentic-portrait.jpg',
+    image: '/images/authentic-portrait.webp',
   },
   {
     name: 'Luis M.',
     country: 'Mexico',
     quote:
       'The vocational training program I joined through Flyrunz landed me a job within 3 months.',
-    image: '/images/vocational-training.jpg',
+    image: '/images/vocational-training.webp',
   },
   {
     name: 'Fatima B.',
     country: 'Nigeria',
     quote:
       'I never imagined I could study abroad. Flyrunz made it possible and guided me every step of the way.',
-    image: '/images/techjob.jpg',
+    image: '/images/techjob.webp',
   },
 ];
 

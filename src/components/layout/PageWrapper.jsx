@@ -1,28 +1,22 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Navbar from './Navbar';
-import Footer from './Footer';
 
 const PageWrapper = ({ children, titleKey, descriptionKey }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (titleKey) {
-      document.title = t(titleKey);
-    }
+    if (titleKey) document.title = t(titleKey);
     if (descriptionKey) {
       const metaTag = document.querySelector('meta[name="description"]');
-      if (metaTag) {
-        metaTag.setAttribute('content', t(descriptionKey));
-      }
+      if (metaTag) metaTag.setAttribute('content', t(descriptionKey));
     }
   }, [t, titleKey, descriptionKey]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-gray-800">
-      <Navbar />
-      <main className="flex-grow px-4 md:px-8 lg:px-20 py-8">{children}</main>
-      <Footer />
+    <div className="flex flex-col min-h-screen w-screen overflow-x-hidden bg-white">
+      <main className="flex-grow w-full max-w-screen-xl mx-auto px-4 md:px-8 lg:px-20 py-8">
+        {children}
+      </main>
     </div>
   );
 };

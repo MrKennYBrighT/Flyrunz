@@ -6,7 +6,7 @@ const blogPosts = [
   {
     title: 'Top 10 Scholarships for African Students in Canada',
     excerpt: 'Explore fully funded opportunities and application tips for studying in Canada.',
-    image: '/images/african-student.jpg',
+    image: '/images/african-student.webp',
     category: 'Study Abroad',
     date: 'Oct 5, 2025',
     link: '/blog/scholarships-canada',
@@ -14,7 +14,7 @@ const blogPosts = [
   {
     title: 'Vocational Certifications That Boost Global Employability',
     excerpt: 'Discover hands-on training programs that lead to high-demand careers abroad.',
-    image: '/images/global-emp.jpg',
+    image: '/images/global-emp.webp',
     category: 'Vocational Training',
     date: 'Sep 28, 2025',
     link: '/blog/vocational-certifications',
@@ -22,7 +22,7 @@ const blogPosts = [
   {
     title: 'How Fatima B. Landed a Tech Job in Germany',
     excerpt: 'A Flyrunz success story: from Nigeria to Berlin in 6 months.',
-    image: '/images/techjob.jpg',
+    image: '/images/techjob.webp',
     category: 'Success Stories',
     date: 'Sep 20, 2025',
     link: '/blog/fatima-success-story',

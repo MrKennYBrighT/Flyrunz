@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('/images/global-mobility.jpg')",
+        backgroundImage: "url('/images/global-mobility.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

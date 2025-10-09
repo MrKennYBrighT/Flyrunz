@@ -1,8 +1,25 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation
+} from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+
+// Pages
 import Home from './pages/Home';
-import NotFound from './pages/NotFound'; // ✅ Added 404 page
+import AboutFlyrunz from './pages/AboutFlyrunz';
+import Programs from './pages/Programs'
+import ContactSupport from './pages/ContactSupport';
+import MeetTheTeam from './pages/MeetTheTeam';
+import NotFound from './pages/NotFound';
+
+
+// Layout
+import PageWrapper from './components/layout/PageWrapper';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -10,8 +27,12 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} /> {/* ✅ Catch-all route */}
+        <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+        <Route path="/about" element={<PageWrapper><AboutFlyrunz /></PageWrapper>} />
+        <Route path="/programs" element={<PageWrapper><Programs /></PageWrapper>} />
+        <Route path="/contact" element={<PageWrapper><ContactSupport /></PageWrapper>} />
+        <Route path="/team" element={<PageWrapper><MeetTheTeam /></PageWrapper>} />
+        <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
       </Routes>
     </AnimatePresence>
   );
@@ -21,13 +42,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500); // simulate loading
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <Router>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {loading ? (
           <motion.div
             initial={{ opacity: 1 }}
@@ -41,7 +62,7 @@ function App() {
               alt="Flyrunz Loading"
               className="h-20 w-20 mb-4"
               animate={{ rotate: 360 }}
-              transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 1.2, ease: 'linear' }}
             />
             <motion.p
               initial={{ opacity: 0 }}
@@ -53,7 +74,13 @@ function App() {
             </motion.p>
           </motion.div>
         ) : (
-          <AnimatedRoutes />
+          <div className="flex flex-col min-h-screen bg-white text-gray-800">
+            <Navbar />
+            <div className="flex-grow flex flex-col">
+              <AnimatedRoutes />
+            </div>
+            <Footer />
+          </div>
         )}
       </AnimatePresence>
     </Router>

@@ -7,7 +7,7 @@ const programs = [
     title: 'Academic Advisory & Study Abroad',
     description:
       'Learn more about how Flyrunz can support your journey through personalized guidance and global partnerships.',
-    image: '/images/academic-advisory.jpg',
+    image: '/images/academic-advisory.webp',
     alt: 'Student in graduation attire holding diploma',
     objectPosition: 'object-top',
   },
@@ -15,7 +15,7 @@ const programs = [
     title: 'Vocational & Skills Training',
     description:
       'Gain hands-on skills and certifications that open doors to global employment opportunities.',
-    image: '/images/vocational-training.jpg',
+    image: '/images/vocational-training.webp',
     alt: 'Person welding in a vocational workshop',
     objectPosition: 'object-[0_60%]',
   },
@@ -23,7 +23,7 @@ const programs = [
     title: 'Educational & Career Consultancy',
     description:
       'Navigate your academic and career path with expert advice tailored to your goals.',
-    image: '/images/student-consultation.jpg',
+    image: '/images/student-consultation.webp',
     alt: 'Professional walking through airport terminal',
     objectPosition: 'object-[0_60%]',
   },
@@ -31,7 +31,7 @@ const programs = [
     title: 'Institutional Partnerships',
     description:
       'Collaborate with Flyrunz to deliver world-class programs and expand global reach.',
-    image: '/images/partnerships.jpg',
+    image: '/images/partnerships.webp',
     alt: 'Diverse team in a meeting room',
     objectPosition: 'object-top',
   },
