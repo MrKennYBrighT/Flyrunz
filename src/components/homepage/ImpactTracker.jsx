@@ -4,10 +4,10 @@ import { useInView } from 'react-intersection-observer';
 
 const ImpactTracker = () => {
   const stats = [
-    { label: 'Students Placed', value: '12,450+' },
-    { label: 'Countries Reached', value: '35+' },
-    { label: 'Scholarships Awarded', value: '$4.2M+' },
-    { label: 'Partner Institutions', value: '120+' },
+    { label: 'Students Placed', value: '200+' },
+    { label: 'Countries Reached', value: '10+' },
+    { label: 'Scholarships Awarded', value: '$200,000+' },
+    { label: 'Partner Institutions', value: '12+' },
   ];
 
   const controls = useAnimation();

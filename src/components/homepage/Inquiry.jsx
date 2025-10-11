@@ -91,10 +91,11 @@ const Inquiry = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="bg-white shadow-md rounded-xl p-6 flex flex-col gap-4">
+              {/* Updated Dropdown: Category */}
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="border px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
                 <option value="" disabled hidden>Categories</option>
@@ -107,10 +108,11 @@ const Inquiry = () => {
                 <option value="Book Consultation">Book Consultation</option>
               </select>
 
+              {/* Updated Dropdown: Destination */}
               <select
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                className="border px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
                 <option value="" disabled hidden>Country</option>
@@ -123,21 +125,23 @@ const Inquiry = () => {
                 <option value="Schengen (EU)">Schengen (EU)</option>
               </select>
 
+              {/* Updated Email Field */}
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
-                className="border px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
 
+              {/* Updated Phone Field */}
               <input
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Your Phone Number"
-                className="border px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
 

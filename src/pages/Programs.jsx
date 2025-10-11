@@ -37,10 +37,10 @@ const Programs = () => {
         transition={{ duration: 0.6 }}
         className="max-w-screen-xl mx-auto"
       >
-        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center text-purple-700">
+        <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-center text-blue-700">
           Our Programs
         </h2>
-        <p className="text-center text-lg mb-12">
+        <p className="text-center text-base text-gray-600 mb-12">
           Whether you're a student, professional, or institution, Flyrunz offers tailored programs to help you thrive globally.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -48,13 +48,13 @@ const Programs = () => {
             <motion.div
               key={index}
               whileHover={{ scale: 1.03 }}
-              className="bg-purple-50 border border-purple-200 rounded-lg p-6 shadow-md"
+              className="bg-gray-50 border border-gray-200 rounded-lg p-6 shadow-sm"
             >
               <div className="text-4xl mb-4">{program.icon}</div>
-              <h3 className="text-xl font-semibold text-purple-800 mb-2">
+              <h3 className="text-lg font-semibold text-blue-700 mb-2">
                 {program.title}
               </h3>
-              <p className="text-gray-700">{program.description}</p>
+              <p className="text-sm text-gray-600">{program.description}</p>
             </motion.div>
           ))}
         </div>

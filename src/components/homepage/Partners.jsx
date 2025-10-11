@@ -9,9 +9,9 @@ const partners = [
     url: 'https://www.unesco.org/',
   },
   {
-    name: 'British Council',
-    logo: '/logos/british-council.png',
-    url: 'https://www.britishcouncil.org/',
+    name: 'ZenithTravelGroup',
+    logo: '/logos/zenith.webp',
+    url: 'https://www.zenithtravelgroup.com/',
   },
   {
     name: 'DAAD',

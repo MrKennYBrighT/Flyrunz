@@ -4,7 +4,7 @@ const HeroSection = () => {
   return (
     <div
       style={{
-        backgroundImage: "url('/images/global-mobility.webp')",
+        backgroundImage: "url('/images/hero.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -36,7 +36,15 @@ const HeroSection = () => {
           padding: "100px 20px",
         }}
       >
-        <h1
+        {/* Animated Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          whileInView={{
+            scale: [1, 1.02, 1],
+            transition: { repeat: Infinity, duration: 3 },
+          }}
           style={{
             fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
             color: "#1D4ED8",
@@ -45,8 +53,13 @@ const HeroSection = () => {
           }}
         >
           Empowering Global Journeys
-        </h1>
-        <p
+        </motion.h1>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 1 }}
           style={{
             fontSize: "clamp(1rem, 2vw, 1.25rem)",
             color: "#374151",
@@ -55,8 +68,13 @@ const HeroSection = () => {
           }}
         >
           Flyrunz Travel Consult helps students, professionals, and entrepreneurs access global opportunities through education, vocational training, and career mobility programs.
-        </p>
-        <div
+        </motion.p>
+
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8, duration: 1 }}
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -67,7 +85,7 @@ const HeroSection = () => {
           <a href="#inquiry"><MotionButton bg="#1D4ED8" text="#FFFFFF" label="Find Your Path" /></a>
           <a href="#programs"><MotionButton bg="#F59E0B" text="#FFFFFF" label="Explore Programs" /></a>
           <a href="#contact"><MotionOutlineButton border="#1D4ED8" label="Talk to an Advisor" /></a>
-        </div>
+        </motion.div>
       </motion.div>
     </div>
   );
