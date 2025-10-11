@@ -3,28 +3,28 @@ import { motion } from 'framer-motion';
 
 const programs = [
   {
-    title: 'Study Abroad Pathways',
+    title: 'Flight Booking & Reservations',
     description:
-      'Explore academic opportunities across top universities worldwide. We guide you through admissions, visa processing, and scholarship applications.',
+      'We help you secure affordable and flexible flight options tailored to your travel plans.',
+    icon: '🛫',
+  },
+  {
+    title: 'Educational Consultancy & Career Advisory',
+    description:
+      'Get expert guidance on academic pathways, career planning, and international education opportunities.',
     icon: '🎓',
   },
   {
-    title: 'Career Mobility Programs',
+    title: 'Visa Advisory & Travel Support',
     description:
-      'Advance your professional journey with global internships, job placements, and skill development tailored to international standards.',
-    icon: '🌍',
+      'From documentation to interview prep, we provide full support for student, work, and visitor visas.',
+    icon: '📑',
   },
   {
-    title: 'Institutional Partnerships',
+    title: 'Institutional Partnerships & Exchange Programs',
     description:
-      'We collaborate with schools, colleges, and organizations to create custom mobility programs, exchange initiatives, and global outreach.',
+      'We collaborate with institutions to build global exchange programs and strategic partnerships.',
     icon: '🤝',
-  },
-  {
-    title: 'Visa & Travel Support',
-    description:
-      'From documentation to interview prep, we provide end-to-end support for student, work, and visitor visas.',
-    icon: '✈️',
   },
 ];
 

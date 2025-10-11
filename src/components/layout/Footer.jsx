@@ -9,7 +9,8 @@ const Footer = () => {
           Ready to start your journey?
         </h3>
         <p className="mb-6">
-          Whether you're a student, professional, or institution—Flyrunz is here to guide you.
+          Your Gateway to Global Opportunities
+Empowering students, professionals, and institutions to achieve their international goals.
         </p>
 
         {/* Social Media Icons */}
@@ -18,7 +19,7 @@ const Footer = () => {
           <motion.a
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            href="https://wa.me/2349114387785"
+            href="https://wa.me/2347060583041"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="WhatsApp"
@@ -33,7 +34,7 @@ const Footer = () => {
           <motion.a
             whileHover={{ scale: 1.2 }}
             whileTap={{ scale: 0.95 }}
-            href="mailto:contact@flyrunz.com"
+            href="mailto:flyrunztravels@gmail.com"
             aria-label="Email"
             className="hover:text-blue-700 transition"
           >
