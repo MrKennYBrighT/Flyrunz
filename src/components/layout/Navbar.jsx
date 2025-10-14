@@ -78,7 +78,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 bg-white shadow-md transition-shadow duration-300">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/images/logo.jpeg" alt="Flyrunz Logo" className="h-10 w-auto" />
+          <img src="/images/logo.webp" alt="Flyrunz Logo" className="h-10 w-auto" />
           <span className="hidden md:inline-block text-sm text-blue-700 font-semibold">
             Empowering Global Journeys
           </span>
