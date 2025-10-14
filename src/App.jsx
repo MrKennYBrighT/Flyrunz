@@ -10,11 +10,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 // Pages
 import Home from './pages/Home';
 import AboutFlyrunz from './pages/AboutFlyrunz';
-import Programs from './pages/Programs'
+import Programs from './pages/Programs';
 import ContactSupport from './pages/ContactSupport';
 import MeetTheTeam from './pages/MeetTheTeam';
 import NotFound from './pages/NotFound';
 
+// Blog
+import BlogList from './components/BlogList'; // ✅ Added
+import BlogDetail from './components/BlogDetail'; // ✅ Added
 
 // Layout
 import PageWrapper from './components/layout/PageWrapper';
@@ -32,6 +35,8 @@ const AnimatedRoutes = () => {
         <Route path="/programs" element={<PageWrapper><Programs /></PageWrapper>} />
         <Route path="/contact" element={<PageWrapper><ContactSupport /></PageWrapper>} />
         <Route path="/team" element={<PageWrapper><MeetTheTeam /></PageWrapper>} />
+        <Route path="/blog" element={<PageWrapper><BlogList /></PageWrapper>} /> {/* ✅ Added */}
+        <Route path="/blog/:slug" element={<PageWrapper><BlogDetail /></PageWrapper>} /> {/* ✅ Added */}
         <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
       </Routes>
     </AnimatePresence>

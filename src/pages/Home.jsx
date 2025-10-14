@@ -9,7 +9,7 @@ const FeaturedPrograms = lazy(() => import('../components/homepage/FeaturedProgr
 const PathfinderTool = lazy(() => import('../components/homepage/PathfinderTool'));
 const ImpactTracker = lazy(() => import('../components/homepage/ImpactTracker'));
 const Testimonials = lazy(() => import('../components/homepage/Testimonials'));
-const BlogCenter = lazy(() => import('../components/homepage/BlogCenter'));
+const BlogList = lazy(() => import('../components/BlogList'));
 
 const Home = () => {
   useEffect(() => {
@@ -40,7 +40,7 @@ const Home = () => {
       <LazySection component={PathfinderTool} id="pathfinder" />
       <LazySection component={ImpactTracker} id="impact" />
       <LazySection component={Testimonials} id="testimonials" />
-      <LazySection component={BlogCenter} id="blog" />
+      <LazySection component={BlogList} id="blog" />
     </motion.div>
   );
 };
