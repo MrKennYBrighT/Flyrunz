@@ -13,6 +13,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* ✅ Added for cross-browser font scaling control */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -60,10 +64,16 @@ button:focus-visible {
   :root {
     color: #213547;
     background-color: #ffffff;
+
+    /* ✅ Re-applied for light mode compatibility */
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
@@ -77,4 +87,3 @@ button:focus-visible {
     background-repeat: no-repeat;
   }
 }
-
