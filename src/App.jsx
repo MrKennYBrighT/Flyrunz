@@ -16,8 +16,8 @@ import MeetTheTeam from './pages/MeetTheTeam';
 import NotFound from './pages/NotFound';
 
 // Blog
-import BlogList from './components/BlogList'; // ✅ Added
-import BlogDetail from './components/BlogDetail'; // ✅ Added
+import BlogList from './components/BlogList'; 
+import BlogDetail from './components/BlogDetail';
 
 // Layout
 import PageWrapper from './components/layout/PageWrapper';

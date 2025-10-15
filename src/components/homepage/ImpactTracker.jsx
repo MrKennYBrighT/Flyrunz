@@ -1,21 +1,37 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 const ImpactTracker = () => {
   const stats = [
-    { label: 'Students Placed', value: '200+' },
-    { label: 'Countries Reached', value: '10+' },
-    { label: 'Scholarships Awarded', value: '$200,000+' },
-    { label: 'Partner Institutions', value: '12+' },
+    { label: 'Students Placed', value: 200, suffix: '+' },
+    { label: 'Countries Reached', value: 10, suffix: '+' },
+    { label: 'Scholarships Awarded', value: 200000, prefix: '$', suffix: '+' },
+    { label: 'Partner Institutions', value: 12, suffix: '+' },
   ];
 
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  const [counts, setCounts] = useState(stats.map(() => 0));
 
   useEffect(() => {
     if (inView) {
       controls.start('visible');
+      stats.forEach((stat, index) => {
+        let start = 0;
+        const end = stat.value;
+        const duration = 1000;
+        const stepTime = Math.max(Math.floor(duration / end), 20);
+        const timer = setInterval(() => {
+          start += 1;
+          setCounts((prev) => {
+            const updated = [...prev];
+            updated[index] = start;
+            return updated;
+          });
+          if (start >= end) clearInterval(timer);
+        }, stepTime);
+      });
     }
   }, [inView, controls]);
 
@@ -65,14 +81,18 @@ const ImpactTracker = () => {
           </p>
 
           <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
-                className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition duration-300"
+                className="bg-white rounded-lg shadow-md px-4 py-5 text-center hover:shadow-lg transition duration-300"
               >
-                <div className="text-2xl font-bold text-blue-700">{stat.value}</div>
-                <div className="text-sm text-gray-600 mt-2">{stat.label}</div>
+                <div className="text-xl sm:text-2xl font-bold text-blue-700 break-words leading-tight">
+                  {stat.prefix || ''}{counts[index]}{stat.suffix || ''}
+                </div>
+                <div className="text-xs sm:text-sm text-gray-600 mt-2 leading-snug">
+                  {stat.label}
+                </div>
               </motion.div>
             ))}
           </div>

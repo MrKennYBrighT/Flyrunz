@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const MotionButton = ({ bg, text, label }) => (
@@ -25,7 +25,7 @@ const MotionOutlineButton = ({ border, label }) => (
 );
 
 const buttonStyle = (bgColor, textColor) => ({
-  backgroundColor: bgColor,
+  backgroundImage: bgColor,
   color: textColor,
   padding: "12px 24px",
   borderRadius: "8px",
@@ -33,6 +33,7 @@ const buttonStyle = (bgColor, textColor) => ({
   cursor: "pointer",
   transition: "background-color 0.3s",
   fontSize: "clamp(0.9rem, 2vw, 1rem)",
+  boxShadow: "0 0 12px rgba(96,165,250,0.3)",
 });
 
 const outlineButtonStyle = (borderColor) => ({
@@ -48,6 +49,8 @@ const outlineButtonStyle = (borderColor) => ({
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,16 +72,30 @@ const Navbar = () => {
 
   const handleHomeClick = () => {
     sessionStorage.setItem('scrollTarget', 'hero');
-    window.location.href = '/';
+    navigate('/');
   };
 
-  const handleLinkClick = () => setIsOpen(false); // DRY helper
+  const handleLinkClick = () => setIsOpen(false);
+
+  const handleCTA = () => {
+    if (location.pathname === '/') {
+      const el = document.getElementById('inquiry');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      sessionStorage.setItem('scrollTarget', 'inquiry');
+      navigate('/');
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md transition-shadow duration-300">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <img src="/images/logo.webp" alt="Flyrunz Logo" className="h-10 w-auto" />
+          <img
+            src="/images/logo.webp"
+            alt="Flyrunz Logo"
+            className="h-12 sm:h-14 md:h-16 w-auto"
+          />
           <span className="hidden md:inline-block text-sm text-blue-700 font-semibold">
             Empowering Global Journeys
           </span>
@@ -91,37 +108,40 @@ const Navbar = () => {
           <li><Link to="/team" className="transition-all duration-300 hover:text-blue-700 hover:border-b-2 hover:border-blue-700">Meet the Team</Link></li>
           <li><Link to="/contact" className="transition-all duration-300 hover:text-blue-700 hover:border-b-2 hover:border-blue-700">Contact</Link></li>
           <li>
-            <a href="#inquiry">
-              <MotionButton bg="#1D4ED8" text="#FFFFFF" label="Claim Your Global Opportunity" />
-            </a>
+            <div onClick={handleCTA} style={{ display: 'inline-block' }}>
+              <MotionButton
+                bg="linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%)"
+                text="#FFFFFF"
+                label="Claim Your Global Opportunity"
+              />
+            </div>
           </li>
         </ul>
-
         {/* ✅ Styled Hamburger Button */}
-       <button
-  aria-label="Toggle menu"
-  onClick={() => setIsOpen(!isOpen)}
-  className="md:hidden p-2 rounded border-2 border-blue-700 bg-white focus:outline-none hover:bg-blue-50 transition"
-  style={{ backgroundColor: '#ffffff' }} // force white background
->
-  <svg
-    className="w-6 h-6"
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ backgroundColor: 'transparent' }} // force no fill
-  >
-    <path
-      d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-      stroke="#1D4ED8"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-</button>
-
+        <button
+          aria-label="Toggle menu"
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-2 rounded border-2 border-blue-700 bg-white focus:outline-none hover:bg-blue-50 transition"
+          style={{ backgroundColor: '#ffffff' }}
+        >
+          <svg
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ backgroundColor: 'transparent' }}
+          >
+            <path
+              d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+              stroke="#3B82F6"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </nav>
+
       {isOpen && (
         <div className="md:hidden bg-white px-6 pb-6 transition-all duration-300 ease-in-out border-t border-blue-100 shadow-sm">
           <ul className="flex flex-col gap-4 text-gray-700 font-medium">
@@ -131,13 +151,17 @@ const Navbar = () => {
             <li><Link to="/team" onClick={handleLinkClick} className="block py-2 px-2 rounded hover:bg-blue-50 hover:text-blue-700 transition">Meet the Team</Link></li>
             <li><Link to="/contact" onClick={handleLinkClick} className="block py-2 px-2 rounded hover:bg-blue-50 hover:text-blue-700 transition">Contact</Link></li>
             <li>
-              <a href="#inquiry" onClick={handleLinkClick}>
-                <MotionButton bg="#1D4ED8" text="#FFFFFF" label="Claim Your Global Opportunity" />
-              </a>
+              <div onClick={() => { handleCTA(); handleLinkClick(); }} style={{ display: 'inline-block' }}>
+                <MotionButton
+                  bg="linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%)"
+                  text="#FFFFFF"
+                  label="Claim Your Global Opportunity"
+                />
+              </div>
             </li>
             <li>
               <a href="#contact" onClick={handleLinkClick}>
-                <MotionOutlineButton border="#1D4ED8" label="Talk to an Advisor" />
+                <MotionOutlineButton border="#3B82F6" label="Talk to an Advisor" />
               </a>
             </li>
           </ul>

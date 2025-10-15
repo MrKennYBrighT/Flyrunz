@@ -19,7 +19,7 @@ const teamMembers = [
     name: 'Chika N.',
     role: 'Career Mobility Advisor',
     bio: 'Chika supports clients in navigating career transitions, visa pathways, and global job markets with tailored strategies and mentorship.',
-    photo: '/images/academic-advisory.webp',
+    photo: '/images/chika.webp',
   },
 ];
 
@@ -58,7 +58,7 @@ const MeetTheTeam = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           whileHover={{ scale: 1.02 }}
           className="mb-10"
         >

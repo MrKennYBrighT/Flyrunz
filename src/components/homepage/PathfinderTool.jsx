@@ -7,7 +7,7 @@ const PathfinderTool = () => {
     {
       label: 'Study Abroad',
       icon: '🌍',
-      programs: ['Canada', 'Germany', 'UK'],
+      programs: ['Canada', 'Germany', 'UK', 'Malta'],
     },
     {
       label: 'Vocational Training',
@@ -17,7 +17,7 @@ const PathfinderTool = () => {
     {
       label: 'Career Mobility',
       icon: '💼',
-      programs: ['Tech Jobs in Germany', 'Remote Work'],
+      programs: ['Tech Jobs in Germany', 'Remote Work', 'Digital Nomad'],
     },
     {
       label: 'Language Immersion',
