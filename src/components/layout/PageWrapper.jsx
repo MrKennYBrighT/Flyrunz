@@ -1,16 +1,13 @@
 import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const PageWrapper = ({ children, titleKey, descriptionKey }) => {
-  const { t } = useTranslation();
-
   useEffect(() => {
-    if (titleKey) document.title = t(titleKey);
+    if (titleKey) document.title = titleKey;
     if (descriptionKey) {
       const metaTag = document.querySelector('meta[name="description"]');
-      if (metaTag) metaTag.setAttribute('content', t(descriptionKey));
+      if (metaTag) metaTag.setAttribute('content', descriptionKey);
     }
-  }, [t, titleKey, descriptionKey]);
+  }, [titleKey, descriptionKey]);
 
   return (
     <div className="flex flex-col min-h-screen w-screen overflow-x-hidden bg-white">
