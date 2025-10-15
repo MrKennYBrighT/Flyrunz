@@ -62,7 +62,6 @@ const Inquiry = () => {
   return (
     <section className="bg-blue-50 py-16 px-6 md:px-20">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Image Section */}
         <div className="w-full">
           <img
             src="/images/student-consultation.jpg"
@@ -71,7 +70,6 @@ const Inquiry = () => {
           />
         </div>
 
-        {/* Form Section */}
         <motion.div
           ref={ref}
           initial="hidden"
@@ -91,15 +89,13 @@ const Inquiry = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="bg-white shadow-md rounded-xl p-6 flex flex-col gap-4">
-              {/* Accessible Label for Category */}
-              <label htmlFor="category" className="sr-only">
-                Select Inquiry Category
-              </label>
+              <label htmlFor="category" className="sr-only">Select Inquiry Category</label>
               <select
                 id="category"
                 name="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
+                autoComplete="off"
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
@@ -113,15 +109,13 @@ const Inquiry = () => {
                 <option value="Book Consultation">Book Consultation</option>
               </select>
 
-              {/* Accessible Label for Destination */}
-              <label htmlFor="destination" className="sr-only">
-                Select Destination Country
-              </label>
+              <label htmlFor="destination" className="sr-only">Select Destination Country</label>
               <select
                 id="destination"
                 name="destination"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
+                autoComplete="country"
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               >
@@ -135,10 +129,7 @@ const Inquiry = () => {
                 <option value="Schengen (EU)">Schengen (EU)</option>
               </select>
 
-              {/* Accessible Label for Email */}
-              <label htmlFor="email" className="sr-only">
-                Your Email Address
-              </label>
+              <label htmlFor="email" className="sr-only">Your Email Address</label>
               <input
                 type="email"
                 id="email"
@@ -146,14 +137,12 @@ const Inquiry = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
+                autoComplete="email"
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
 
-              {/* Accessible Label for Phone */}
-              <label htmlFor="phone" className="sr-only">
-                Your Phone Number
-              </label>
+              <label htmlFor="phone" className="sr-only">Your Phone Number</label>
               <input
                 type="tel"
                 id="phone"
@@ -161,11 +150,10 @@ const Inquiry = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Your Phone Number"
+                autoComplete="tel"
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
-
-              {/* Centered Animated Button */}
               <div className="flex justify-center">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
