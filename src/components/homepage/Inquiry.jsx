@@ -91,8 +91,13 @@ const Inquiry = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="bg-white shadow-md rounded-xl p-6 flex flex-col gap-4">
-              {/* Updated Dropdown: Category */}
+              {/* Accessible Label for Category */}
+              <label htmlFor="category" className="sr-only">
+                Select Inquiry Category
+              </label>
               <select
+                id="category"
+                name="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -108,8 +113,13 @@ const Inquiry = () => {
                 <option value="Book Consultation">Book Consultation</option>
               </select>
 
-              {/* Updated Dropdown: Destination */}
+              {/* Accessible Label for Destination */}
+              <label htmlFor="destination" className="sr-only">
+                Select Destination Country
+              </label>
               <select
+                id="destination"
+                name="destination"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
                 className="bg-blue-50 border border-blue-200 px-3 py-2 rounded w-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -125,9 +135,14 @@ const Inquiry = () => {
                 <option value="Schengen (EU)">Schengen (EU)</option>
               </select>
 
-              {/* Updated Email Field */}
+              {/* Accessible Label for Email */}
+              <label htmlFor="email" className="sr-only">
+                Your Email Address
+              </label>
               <input
                 type="email"
+                id="email"
+                name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your Email"
@@ -135,9 +150,14 @@ const Inquiry = () => {
                 required
               />
 
-              {/* Updated Phone Field */}
+              {/* Accessible Label for Phone */}
+              <label htmlFor="phone" className="sr-only">
+                Your Phone Number
+              </label>
               <input
                 type="tel"
+                id="phone"
+                name="phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="Your Phone Number"
