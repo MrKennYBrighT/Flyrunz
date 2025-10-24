@@ -5,20 +5,20 @@ import { useInView } from 'react-intersection-observer';
 const testimonials = [
   {
     name: 'Amina O.',
-    country: 'Kenya',
+    country: 'Nigeria',
     quote:
       'Flyrunz helped me secure a scholarship and study in Canada. It changed my life completely!',
     image: '/images/authentic-portrait.webp',
   },
   {
-    name: 'Luis M.',
-    country: 'Mexico',
+    name: 'Olusegun J.',
+    country: 'Nigeria',
     quote:
       'The vocational training program I joined through Flyrunz landed me a job within 3 months.',
     image: '/images/vocational-training.webp',
   },
   {
-    name: 'Fatima B.',
+    name: 'Elizabeth B.',
     country: 'Nigeria',
     quote:
       'I never imagined I could study abroad. Flyrunz made it possible and guided me every step of the way.',

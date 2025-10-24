@@ -1,29 +1,22 @@
 import { useEffect, useState } from 'react'
-import { createClient } from '@sanity/client'
-
-const client = createClient({
-  projectId: 'tlz8fh1m',
-  dataset: 'production',
-  useCdn: true,
-  apiVersion: '2023-10-14'
-})
+import { urlFor } from '../utils/imageUrl'
+import { getSanityClient } from '../sanityClient'
 
 export default function LatestBlogs() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    client.fetch(`*[_type == "post"] | order(publishedAt desc)[0...3]{
-      title,
-      slug,
-      publishedAt,
-      author->{
-        name
-      },
-      categories[]->{
-        title
-      },
-      body
-    }`).then(data => setPosts(data)).catch(console.error)
+    getSanityClient().then(client => {
+      client.fetch(`*[_type == "post"] | order(publishedAt desc)[0...3]{
+        title,
+        slug,
+        publishedAt,
+        author->{ name },
+        categories[]->{ title },
+        body,
+        mainImage
+      }`).then(setPosts).catch(console.error)
+    })
   }, [])
 
   return (
@@ -34,6 +27,14 @@ export default function LatestBlogs() {
       ) : (
         posts.map(post => (
           <div key={post.slug.current} style={{ marginBottom: '2rem' }}>
+            {post.mainImage && (
+              <img
+                src={urlFor(post.mainImage).width(600).url()}
+                alt={post.title}
+                loading="lazy"
+                style={{ width: '100%', height: 'auto', marginBottom: '1rem' }}
+              />
+            )}
             <h3>{post.title}</h3>
             <p><strong>Author:</strong> {post.author?.name}</p>
             <p><strong>Date:</strong> {new Date(post.publishedAt).toDateString()}</p>

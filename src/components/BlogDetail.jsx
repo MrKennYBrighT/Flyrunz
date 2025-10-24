@@ -1,17 +1,18 @@
-// BlogDetail.jsx
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { PortableText } from '@portabletext/react'
 import { urlFor } from '../components/imageUrl'
-import client from '../sanityClient'
+import { getSanityClient } from '../sanityClient'
 
 export default function BlogDetail() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
 
   useEffect(() => {
-    client.fetch(`*[_type == "post" && slug.current == $slug][0]`, { slug })
-      .then(setPost)
+    getSanityClient().then(client => {
+      client.fetch(`*[_type == "post" && slug.current == $slug][0]`, { slug })
+        .then(setPost)
+    })
   }, [slug])
 
   if (!post) return <p>Loading...</p>

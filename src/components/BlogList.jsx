@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import client from '../sanityClient'
-import { urlFor } from './imageUrl'
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { urlFor } from './imageUrl'
+import { getSanityClient } from '../sanityClient'
 
 const BlogList = ({ limit = null }) => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    const query = limit
-      ? `*[_type == "post"] | order(publishedAt desc)[0...${limit}]{
-          title,
-          slug,
-          publishedAt,
-          mainImage,
-          author->{ name },
-          categories[]->{ title },
-          body
-        }`
-      : `*[_type == "post"] | order(publishedAt desc){
-          title,
-          slug,
-          publishedAt,
-          mainImage,
-          author->{ name },
-          categories[]->{ title },
-          body
-        }`
+    getSanityClient().then(client => {
+      const query = limit
+        ? `*[_type == "post"] | order(publishedAt desc)[0...${limit}]{
+            title,
+            slug,
+            publishedAt,
+            mainImage,
+            author->{ name },
+            categories[]->{ title },
+            body
+          }`
+        : `*[_type == "post"] | order(publishedAt desc){
+            title,
+            slug,
+            publishedAt,
+            mainImage,
+            author->{ name },
+            categories[]->{ title },
+            body
+          }`
 
-    client.fetch(query)
-      .then(setPosts)
-      .catch(console.error)
+      client.fetch(query)
+        .then(setPosts)
+        .catch(console.error)
+    })
   }, [limit])
 
   return (
@@ -40,11 +41,8 @@ const BlogList = ({ limit = null }) => {
         {posts.length > 0 ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {posts.map(post => (
-              <motion.div
+              <div
                 key={post.slug.current}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
                 className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl"
               >
                 {post.mainImage && (
@@ -75,7 +73,7 @@ const BlogList = ({ limit = null }) => {
                 >
                   Read full post →
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         ) : (

@@ -42,7 +42,8 @@ const FeaturedPrograms = () => {
   const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
   useEffect(() => {
-    if (inView) {
+    const isMobile = window.innerWidth < 768;
+    if (inView && !isMobile) {
       controls.start('visible');
     }
   }, [inView, controls]);
@@ -64,7 +65,6 @@ const FeaturedPrograms = () => {
     hidden: { opacity: 0, scale: 0.95 },
     visible: { opacity: 1, scale: 1 },
   };
-
   return (
     <section className="bg-white py-16 px-6 md:px-20">
       <div className="max-w-6xl mx-auto text-center">
@@ -91,6 +91,7 @@ const FeaturedPrograms = () => {
               <img
                 src={program.image}
                 alt={program.alt}
+                loading="lazy"
                 className={`w-full aspect-[4/3] object-cover ${program.objectPosition} rounded-t-lg`}
               />
               <div className="p-6 text-left">

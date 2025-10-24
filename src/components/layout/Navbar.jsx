@@ -159,11 +159,6 @@ const Navbar = () => {
                 />
               </div>
             </li>
-            <li>
-              <a href="#contact" onClick={handleLinkClick}>
-                <MotionOutlineButton border="#3B82F6" label="Talk to an Advisor" />
-              </a>
-            </li>
           </ul>
         </div>
       )}
